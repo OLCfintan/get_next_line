@@ -6,47 +6,11 @@
 /*   By: oel-mouk <oel-mouk@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 04:49:03 by oel-mouk          #+#    #+#             */
-/*   Updated: 2024/03/04 04:49:10 by oel-mouk         ###   ########.fr       */
+/*   Updated: 2024/03/04 04:55:29 by oel-mouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <fcntl.h>
-
-int	ft_ifnot(char *tab)
-{
-	int	i;
-
-	i = 0;
-	if (!tab)
-		return (1);
-	while (tab[i] && tab[i] != '\n')
-		i++;
-	return (0 + (i == strlen(tab)));
-}
-
-char	*ft_strjoin(char *s1, char *s2)
-{
-	int		i;
-	int		j;
-	char	*tab;
-
-	i = -1;
-	j = -1;
-	if (!s1 && !s2)
-		return (NULL);
-	if (!s1)
-		s1 = malloc(1);
-	tab = malloc(strlen(s1) + strlen(s2) + 1);
-	if (!tab)
-		return (NULL);
-	while (s1[++i])
-		tab[i] = s1[i];
-	while (s2[++j])
-		tab[i++] = s2[j];
-	tab[i] = '\0';
-	return (free(s1), free(s2), tab);
-}
 
 char	*ft_read(int fd, char *store)
 {
@@ -96,10 +60,10 @@ char	*ft_after(char *store, char *line)
 	int		i;
 	int		j;
 
-	i = strlen(line);
+	i = ft_strlen(line);
 	if (!store[i])
 		return (free(store), NULL);
-	rest = malloc(strlen(store) - strlen(line) + 1);
+	rest = malloc(ft_strlen(store) - ft_strlen(line) + 1);
 	if (!rest)
 		return (NULL);
 	j = 0;
