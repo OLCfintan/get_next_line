@@ -48,16 +48,16 @@ char	*ft_tr(char *str)
 	i += (str[i] == '\n');
 	temp = malloc(i + 1);
 	temp[i] = '\0';
-	while(i >= 0)
+	while (i >= 0)
 		temp[i--] = str[i];
 	return (temp);
 }
 char	*ft_strjoint(char *s1, char *s2)
 {
 	char	*join;
+	int		i;
+	int		j;
 
-	int i;
-	int j;
 	if (!s1 || !s2)
 		return (NULL);
 	join = (char *)malloc(strlen(s1) + strlen(s2) + 1);
@@ -82,11 +82,9 @@ char	*ft_strjoint(char *s1, char *s2)
 	return (join);
 }
 
-char *ft_re(char str)
+char	*ft_re(char str)
 {
-	int i;
-
-
+	int	i;
 }
 char	*get_next_line(int fd)
 {
@@ -112,9 +110,7 @@ char	*get_next_line(int fd)
 	return (join);
 }
 
-
 //N\n--Y\n--O\n
-
 
 int	main(void)
 {

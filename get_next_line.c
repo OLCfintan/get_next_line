@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: oel-mouk <oel-mouk@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/04 04:49:03 by oel-mouk          #+#    #+#             */
+/*   Updated: 2024/03/04 04:49:10 by oel-mouk         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 #include <fcntl.h>
 
@@ -13,26 +25,26 @@ int	ft_ifnot(char *tab)
 	return (0 + (i == strlen(tab)));
 }
 
-char *ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
-	int i;
-	int j;
-	char *tab;
+	int		i;
+	int		j;
+	char	*tab;
 
 	i = -1;
 	j = -1;
-	if(!s1 && !s2)
-		return NULL;
-	if(!s1)
+	if (!s1 && !s2)
+		return (NULL);
+	if (!s1)
 		s1 = malloc(1);
 	tab = malloc(strlen(s1) + strlen(s2) + 1);
-	if(!tab)
-		return NULL;
-	while(s1[++i])
+	if (!tab)
+		return (NULL);
+	while (s1[++i])
 		tab[i] = s1[i];
-	while(s2[++j])
+	while (s2[++j])
 		tab[i++] = s2[j];
-	tab[i] =  '\0';
+	tab[i] = '\0';
 	return (free(s1), free(s2), tab);
 }
 
@@ -58,8 +70,8 @@ char	*ft_read(int fd, char *store)
 
 char	*ft_tr(char *store)
 {
-	char *line;
-	int i;
+	char	*line;
+	int		i;
 
 	i = 0;
 	if (!store)
@@ -80,9 +92,9 @@ char	*ft_tr(char *store)
 
 char	*ft_after(char *store, char *line)
 {
-	char *rest;
-	int	i;
-	int	j;
+	char	*rest;
+	int		i;
+	int		j;
 
 	i = strlen(line);
 	if (!store[i])
@@ -116,13 +128,4 @@ char	*get_next_line(int fd)
 	line = ft_tr(tmp);
 	store = ft_after(tmp, line);
 	return (line);
-}
-
-int	main(void)
-{
-	int fd = open("test2.txt", O_RDONLY);
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-	return (0);
 }
